@@ -1,0 +1,36 @@
+<div class="p-4 sm:ml-64">
+  <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
+    <div class="row-auto">
+    <div *ngFor="let patient of patients()">
+      <div class="flex justify-center">
+        <div class="p-6">
+        <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <a class="h-[150px] block"><img class="h-full" src="https://www.pngkit.com/png/detail/133-1338563_boys-wrestling-avatar-html.png"></a>
+          <a >
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{patient.name}}</h5>
+          </a>
+          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Age: {{patient.age}}</p>
+          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Location: {{patient.location}}</p>
+          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Phone: {{patient.phone}}</p>
+          <ng-container *ngIf="!morePatientData">
+          <p class="mb-3 font-normal text-blue-700 dark:text-blue-700 show"><a class="to-blue-600 text-blue-700" (click)="moreData(patient , 'show')">view more</a></p>
+          </ng-container>
+          <div class="hide" [id]="patient.id">
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Gender: {{patient.gender}}</p>
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">History: {{patient.history}}</p>
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lab tests: {{patient.labtest}}</p>
+              <p class="mb-3 font-normal text-blue-700 dark:text-blue-700"><a class="to-blue-600 text-blue-700" (click)="moreData(patient , 'hide')">view less</a></p>
+            </div>
+          <a class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" (click)="patientLabTest(patient.id , patient)">
+        Lab tests
+              <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+              </svg>
+          </a>
+        </div>
+      </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

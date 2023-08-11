@@ -1,0 +1,26 @@
+$breakpoints: (
+  "phone": "599px",
+  "tablet-portrait": "600px",
+  "tablet-landscape": "960px",
+  "desktop": "1280px",
+  "big-large": "1920px",
+) !default;
+
+@mixin screen($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+    @media (max-width: $breakpoint-value) {
+      @content;
+    }
+  } @else {
+    @warn 'Breakpoint #{$breakpoint} does not exist in $breakpoints map.' + ' Available breakpoints are: #{map-keys($breakpoints)}.';
+  }
+}
+
+@mixin screens($breakpoints...) {
+  @each $breakpoint in $breakpoints {
+    @include screen($breakpoint) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,153 @@
+<mat-sidenav-container class="h-full">
+  <mat-sidenav
+    #drawer
+    class="w-[250px] border-none bg-gray-100"
+    [attr.role]="isDeviceSmall() ? 'dialog' : 'navigation'"
+    [mode]="isDeviceSmall() ? 'over' : 'side'"
+    [opened]="isDeviceSmall() === false"
+    [autoFocus]="false"
+    [fixedInViewport]="true"
+  >
+    <div class="mb-3 flex flex-col items-center justify-center gap-3 p-3">
+      <img
+        src="assets/logo/transaprent icon blue.png"
+        class="rounded"
+        width="140"
+        height="140"
+        alt="Medikea Logo"
+        priority="true"
+      />
+      <h3
+        class="flex gap-0 text-center text-base text-gray-700 capitalize font-light"
+      >
+        <span class="mr-1">Welcome,</span>
+        Mudathir
+      </h3>
+    </div>
+
+    <mat-nav-list class="p-3 capitalize">
+      <ng-container>
+        <mat-list-item
+          routerLink="dashboard"
+          (click)="navItemClicked.set(true)"
+          routerLinkActive="bg-primary-lighter shadow"
+          class="mb-2 h-12 rounded hover:bg-primary-lighter hover:shadow-sm"
+        >
+          <mat-icon matListItemIcon class="mr-2 font-medium text-gray-800">
+            dashboard
+          </mat-icon>
+          <span matListItemLine class="font-medium text-gray-800">
+            Dashboard
+          </span>
+        </mat-list-item>
+        <mat-list-item
+          routerLink="pending-perscription"
+          (click)="navItemClicked.set(true)"
+          routerLinkActive="bg-primary-lighter shadow"
+          class="mb-2 h-12 rounded hover:bg-primary-lighter hover:shadow-sm"
+        >
+          <mat-icon matListItemIcon class="mr-2 font-medium text-gray-800">
+            medication_liquid
+          </mat-icon>
+          <span matListItemLine class="font-medium text-gray-800">
+            Pending perscription
+          </span>
+        </mat-list-item>
+
+        <mat-list-item
+          routerLink="completed-perscription"
+          (click)="navItemClicked.set(true)"
+          routerLinkActive="bg-primary-lighter shadow"
+          class="mb-2 h-12 rounded hover:bg-primary-lighter hover:shadow-sm"
+        >
+          <mat-icon matListItemIcon class="mr-2 font-medium text-gray-800">
+            medication_liquid
+          </mat-icon>
+          <span matListItemLine class="font-medium text-gray-800">
+            Completed perscription
+          </span>
+        </mat-list-item>
+
+        <mat-list-item
+          routerLink="all-perscription"
+          (click)="navItemClicked.set(true)"
+          routerLinkActive="bg-primary-lighter shadow"
+          class="mb-2 h-12 rounded hover:bg-primary-lighter hover:shadow-sm"
+        >
+          <mat-icon matListItemIcon class="mr-2 font-medium text-gray-800">
+            medication_liquid
+          </mat-icon>
+          <span matListItemLine class="font-medium text-gray-800">
+            All perscription
+          </span>
+        </mat-list-item>
+
+        <mat-list-item
+          routerLink="manage-inventory"
+          (click)="navItemClicked.set(true)"
+          routerLinkActive="bg-primary-lighter shadow"
+          class="mb-2 h-12 rounded hover:bg-primary-lighter hover:shadow-sm"
+        >
+          <mat-icon matListItemIcon class="mr-2 font-medium text-gray-800">
+            medication_liquid
+          </mat-icon>
+          <span matListItemLine class="font-medium text-gray-800">
+            Manage inventory
+          </span>
+        </mat-list-item>
+      </ng-container>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="overflow-x-hidden bg-gray-100">
+    <mat-toolbar
+      class="mat-elevation-z0 sticky top-0 z-10"
+      [color]="isDeviceSmall() ? 'primary' : ''"
+      [ngClass]="{ 'bg-gray-100': !isDeviceSmall() }"
+    >
+      <button
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="flex-1"></span>
+      <div class="flex items-center gap-4">
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="profileMenu"
+          aria-label="profile icon button"
+          class="h-10 w-10 p-0"
+        >
+          <ng-container>
+            <img
+              class="h-full w-full rounded-full object-cover"
+              src="assets/default.png"
+            />
+          </ng-container>
+        </button>
+      </div>
+      <mat-menu #profileMenu="matMenu" xPosition="before" yPosition="below">
+        <a mat-menu-item routerLink="/profile">
+          <mat-icon>person</mat-icon>
+          Profile
+        </a>
+        <button mat-menu-item>
+          <mat-icon>logout</mat-icon>
+          Log out
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+
+    <main
+      class="lg:h-[calc(100vh-70px)] lg:overflow-hidden lg:rounded-xl lg:mx-4 lg:bg-white"
+    >
+      <div
+        class="h-full w-full lg:overflow-y-auto overflow-x-hidden scrollbar-thin lg:scrollbar-track-primary-lighter lg:scrollbar-thumb-primary"
+      >
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

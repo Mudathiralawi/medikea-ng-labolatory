@@ -1,0 +1,49 @@
+.toolbar-item-spacer {
+  flex: 1 1 auto;
+}
+
+.app-container {
+  height: 90%;
+  margin: 0;
+  border-radius: 10px;
+  color: black;
+  background-color: rgba(255, 250, 243, 0.861);
+}
+
+.app-sidenav {
+  width: 230px;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+}
+
+::ng-deep .custom-class {
+  color: aqua;
+  background-color: rgb(7, 11, 253)!important;
+}
+
+.iterms {
+  background-color: antiquewhite;
+  color: black;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.iterms:hover {
+  background-color: rgb(149, 149, 149);
+}
+
+.mat-toolbar {
+background-color: white;
+color: black;
+}
+
+.words{
+  color: rgb(211, 224, 64);
+}
+
+.mat-menu {
+  background-color: white;
+  color: black;
+}
+

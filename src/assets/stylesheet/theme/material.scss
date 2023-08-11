@@ -1,0 +1,74 @@
+@use "@angular/material" as mat;
+@include mat.core();
+
+@import "palette";
+@import "responsive";
+
+$app-primary: mat.define-palette($mat-primary, 700, 400, 900);
+$app-accent: mat.define-palette(mat.$green-palette, 600, 400, 800);
+$app-warn: mat.define-palette(mat.$red-palette);
+$font-family: "Poppins", sans-serif;
+$default-text: #212121;
+
+:root {
+  --font-family: #{$font-family};
+}
+
+$mat-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $app-primary,
+      accent: $app-accent,
+      warn: $app-warn,
+    ),
+  )
+);
+
+$mat-typography: mat.define-typography-config(
+  $font-family: $font-family,
+  $headline-1:
+    mat.define-typography-level(112px, 112px, 400, $font-family, -0.0134em),
+  $headline-2:
+    mat.define-typography-level(56px, 56px, 500, $font-family, -0.0089em),
+  $headline-3: mat.define-typography-level(45px, 48px, 600, $font-family, 0em),
+  $headline-4:
+    mat.define-typography-level(34px, 40px, 600, $font-family, 0.0074em),
+  $headline-5: mat.define-typography-level(24px, 32px, 500, $font-family, 0em),
+  $headline-6:
+    mat.define-typography-level(20px, 32px, 500, $font-family, 0.0075em),
+  $subtitle-1:
+    mat.define-typography-level(18px, 28px, 500, $font-family, 0.0094em),
+  $subtitle-2:
+    mat.define-typography-level(15px, 24px, 500, $font-family, 0.0067em),
+  $body-1: mat.define-typography-level(16px, 26px, 500, $font-family, 0.0179em),
+  $body-2: mat.define-typography-level(16x, 24px, 400, $font-family, 0.0179em),
+  $button: mat.define-typography-level(14px, 14px, 500, $font-family, 0.0893em),
+  $caption: mat.define-typography-level(12px, 20px, 400, $font-family, 0.0333em),
+  $overline:
+    mat.define-typography-level(10px, 20px, 400, $font-family, 0.1667em),
+);
+
+@include mat.all-component-typographies($mat-typography);
+
+// @include screens('phone', 'tablet-portrait') {
+//   $mat-typography: mat.define-typography-config(
+//     $font-family: $font-family,
+//     $headline-1: mat.define-typography-level(5rem, 5rem, 400),
+//     $headline-2: mat.define-typography-level(2.5rem, 2.5rem, 600),
+//     $headline-3: mat.define-typography-level(2rem, 2rem, 600),
+//     $headline-4: mat.define-typography-level(1.5rem, 1.5rem, 600),
+//     $headline-5: mat.define-typography-level(1.25rem, 1.25rem, 600),
+//     $headline-6: mat.define-typography-level(1rem, 1rem, 600),
+//     $subtitle-1: mat.define-typography-level(1rem, 1rem, 600),
+//     $subtitle-2: mat.define-typography-level(0.875rem, 0.875rem, 600),
+//     $body-1: mat.define-typography-level(0.875rem, 1.25rem, 400),
+//     $body-2: mat.define-typography-level(0.875rem, 1.25rem, 400),
+//     $button: mat.define-typography-level(0.875rem, 0.875rem, 500),
+//     $caption: mat.define-typography-level(0.75rem, 1rem, 400),
+//     $overline: mat.define-typography-level(0.75rem, 1rem, 400),
+//   );
+
+//   @include mat.all-component-typographies($mat-typography);
+// }
+
+@include mat.all-component-themes($mat-theme);
