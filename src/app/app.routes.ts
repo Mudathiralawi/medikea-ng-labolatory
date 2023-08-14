@@ -13,17 +13,17 @@ export const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
-        path: 'pending-perscription',
-        title: 'Pending perscription | Medikea',
+        path: 'pending-labs',
+        title: 'Pending labs | Medikea',
         loadComponent: () =>
-          import('./pages/pending-perscription/pending-perscription.component'),
+          import('./pages/pending-lab/pending-lab.component'),
       },
       {
-        path: 'completed-perscription',
-        title: 'Completed perscription | Medikea',
+        path: 'done-labs',
+        title: 'Done labs | Medikea',
         loadComponent: () =>
           import(
-            './pages/completed-perscription/completed-perscription.component'
+            './pages/done-labs/done-labs.component'
           ),
       },
       {
@@ -37,16 +37,16 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/account/account.component'),
       },
       {
-        path: 'all-perscription',
-        title: 'All perscription | Medikea',
+        path: 'all-labs',
+        title: 'All labs | Medikea',
         loadComponent: () =>
-          import('./pages/all-perscription/all-perscription.component'),
+          import('./pages/all-ordered-labs/all-ordered-labs.component'),
       },
       {
-        path: 'manage-inventory',
-        title: 'Inventory | Medikea',
+        path: 'manage-labs',
+        title: 'Manage labs | Medikea',
         loadComponent: () =>
-          import('./pages/manage-inventory/manage-inventory.component'),
+          import('./pages/manage-labs/manage-labs.component'),
       },
     ],
   },

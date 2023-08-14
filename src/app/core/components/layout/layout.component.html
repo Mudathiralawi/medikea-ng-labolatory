@@ -41,7 +41,7 @@
           </span>
         </mat-list-item>
         <mat-list-item
-          routerLink="pending-perscription"
+          routerLink="pending-labs"
           (click)="navItemClicked.set(true)"
           routerLinkActive="bg-primary-lighter shadow"
           class="mb-2 h-12 rounded hover:bg-primary-lighter hover:shadow-sm"
@@ -50,12 +50,12 @@
             medication_liquid
           </mat-icon>
           <span matListItemLine class="font-medium text-gray-800">
-            Pending perscription
+            Pending labs
           </span>
         </mat-list-item>
 
         <mat-list-item
-          routerLink="completed-perscription"
+          routerLink="done-labs"
           (click)="navItemClicked.set(true)"
           routerLinkActive="bg-primary-lighter shadow"
           class="mb-2 h-12 rounded hover:bg-primary-lighter hover:shadow-sm"
@@ -64,12 +64,12 @@
             medication_liquid
           </mat-icon>
           <span matListItemLine class="font-medium text-gray-800">
-            Completed perscription
+            Done labs
           </span>
         </mat-list-item>
 
         <mat-list-item
-          routerLink="all-perscription"
+          routerLink="all-labs"
           (click)="navItemClicked.set(true)"
           routerLinkActive="bg-primary-lighter shadow"
           class="mb-2 h-12 rounded hover:bg-primary-lighter hover:shadow-sm"
@@ -78,12 +78,12 @@
             medication_liquid
           </mat-icon>
           <span matListItemLine class="font-medium text-gray-800">
-            All perscription
+            All ordered labs
           </span>
         </mat-list-item>
 
         <mat-list-item
-          routerLink="manage-inventory"
+          routerLink="manage-labs"
           (click)="navItemClicked.set(true)"
           routerLinkActive="bg-primary-lighter shadow"
           class="mb-2 h-12 rounded hover:bg-primary-lighter hover:shadow-sm"
@@ -92,7 +92,7 @@
             medication_liquid
           </mat-icon>
           <span matListItemLine class="font-medium text-gray-800">
-            Manage inventory
+            Manage labs
           </span>
         </mat-list-item>
       </ng-container>

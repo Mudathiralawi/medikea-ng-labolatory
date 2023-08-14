@@ -1,13 +1,16 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CompletedPrescriptionStatusComponent } from '../../core/components/completed-prescription-status/completed-prescription-status.component';
-import { PendingPrescriptionStatusComponent } from '../../core/components/pending-prescription-status/pending-prescription-status.component';
-import { TotalPrescriptionTodayTableComponent } from '../../core/components/total-prescription-today-table/total-prescription-today-table.component';
+import { TodayLabStatusComponent } from '../../core/components/today-lab-status/today-lab-status.component';
+import { PendingLabStatusComponent } from '../../core/components/pending-lab-status/pending-lab-status.component';
+import { SampleColllectedStatusComponent } from '../../core/components/sample-colllected-status/sample-colllected-status.component';
+import { DoneLabStatusComponent } from '../../core/components/done-lab-status/done-lab-status.component';
+import { SearchTodayComponent } from '../../core/components/search-today/search-today.component';
+import { TodayLabTableComponent } from '../../core/components/today-lab-table/today-lab-table.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule , CompletedPrescriptionStatusComponent , PendingPrescriptionStatusComponent , TotalPrescriptionTodayTableComponent ],
+  imports: [CommonModule , TodayLabStatusComponent , TodayLabTableComponent , SearchTodayComponent , SampleColllectedStatusComponent , DoneLabStatusComponent , PendingLabStatusComponent ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
