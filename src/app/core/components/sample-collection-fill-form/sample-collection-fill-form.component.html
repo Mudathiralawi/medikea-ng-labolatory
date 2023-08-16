@@ -1,1 +1,109 @@
-<p>sample-collection-fill-form works!</p>
+<div class="w-full h-full flex justify-center overflow-y-auto items-center bg-gray-100">
+  <div class="w-full relative overflow-visible max-h-[90vh]">
+    <div class="w-full relative">
+      <a (click)="close()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="absolute top-0 right-0 mt-2 mr-2 w-6 h-6 cursor-pointer">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </a>
+      <form [formGroup]="collectSample" class="bg-white shadow-md rounded px-8 pt-6 pb-7">
+        <h2 class="text-xl font-semibold mb-4 text-center">Collect sample</h2>
+        <div class="flex mb-4">
+          <mat-form-field class="w-1/2 mr-3">
+            <mat-label>Patient Id</mat-label>
+            <input matInput formControlName="patientId" placeholder="Patient Id" readonly>
+          </mat-form-field>
+          <mat-form-field class="w-1/2 ml-3">
+            <mat-label>Patient name</mat-label>
+            <input matInput formControlName="patientName" placeholder="Patient name" readonly>
+          </mat-form-field>
+        </div>
+        <div class="flex mb-4">
+          <mat-form-field class="w-1/4 mr-3">
+            <mat-label>Age</mat-label>
+            <input matInput formControlName="age" placeholder="Age" readonly>
+          </mat-form-field>
+          <mat-form-field class="w-1/4 ml-3">
+            <mat-label>Gender</mat-label>
+            <input matInput formControlName="gender" placeholder="Gender" readonly>
+          </mat-form-field>
+          <mat-form-field class="w-1/2 ml-3">
+            <mat-label>Ordered by</mat-label>
+            <input matInput formControlName="orderedBy" placeholder="Ordered by" readonly>
+          </mat-form-field>
+        </div>
+        <div class="flex mb-4">
+          <mat-form-field class="w-1/2 mr-3">
+            <mat-label>Sample collected by</mat-label>
+            <input matInput formControlName="sampleCollectedBy" placeholder="Sample collected by">
+          </mat-form-field>
+          <div class="block mb-3 font-bold ml-8">
+            <h6>Date</h6>
+            <h6>{{ currentDate | date: 'dd/MM/yyyy' }}</h6>
+          </div>
+          <div class="block font-bold mb-3 ml-8">
+            <h6>Time</h6>
+            <h6>{{ currentTime }}</h6>
+          </div>
+        </div>
+        <div class="p-3 inline-block min-w-full sm:px-6 lg:px-8 overflow-auto">
+          <table class="min-w-full">
+            <thead class="bg-gray-200 border-b">
+              <tr>
+                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                  Lab tests
+                </th>
+                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                  Price
+                </th>
+                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                  Collection Status
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let row of patient.tests">
+                <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                    {{ row.testName }}
+                  </td>
+                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                    {{ row.price }}
+                  </td>
+                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <ng-container *ngIf="row.status === 'Pending'; else Done">
+                        <input id="checked-checkbox" type="checkbox" (change)="collected(row.testName)" [value]="row.testName" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <p class="ml-3 flex">
+                          <svg class="w-6 h-6 mr-2 text-red-500 dark:text-red-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m13 7-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                          </svg>Not done
+                        </p>
+                      </ng-container>
+                      <ng-template #Done>
+                        <input checked id="checked-checkbox" type="checkbox" (change)="collectedDought(row.testName)" [value]="row.testName" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <p class="ml-3 flex">
+                          <svg class="w-6 h-6 mr-2 text-green-500 dark:text-green-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                          </svg>Done
+                        </p>
+                      </ng-template>
+                    </div>
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+        <div class="font-bold text-right mr-5 mt-5">
+          <h1>Total: 3000 Tsh</h1>
+        </div>
+        <div class="flex justify-end mt-4">
+          <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" (click)="update()">
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

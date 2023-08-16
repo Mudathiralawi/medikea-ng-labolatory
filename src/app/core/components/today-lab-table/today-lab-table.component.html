@@ -48,14 +48,14 @@
       <th mat-header-cell *matHeaderCellDef style="background-color: rgb(160, 164, 164);"> Status </th>
       <td mat-cell *matCellDef="let element">
         <ng-container *ngIf="element.status === 'Pending'; else notGood">
-          {{ element.status }} <a class="text-xs bg-yellow-400 py-1 px-2 rounded-lg ml-2">Collect</a>
+          {{ element.status }} <a class="text-xs bg-yellow-400 py-1 px-2 rounded-lg ml-2" (click)="collectForm(element)">Collect</a>
         </ng-container>
         <ng-template #notGood>
           <ng-container *ngIf="element.status === 'Collected'; else Good">
-          {{ element.status }} <a class="text-xs bg-yellow-400 py-1 px-2 rounded-lg ml-2">Result</a>
+          {{ element.status }} <a class="text-xs bg-yellow-400 py-1 px-2 rounded-lg ml-2" (click)="postResult(element)">Post-result</a>
           </ng-container>
           <ng-template #Good>
-            {{ element.status }}
+            {{ element.status }}<a class="text-xs bg-yellow-400 py-1 px-2 rounded-lg ml-2">See result</a>
           </ng-template>
         </ng-template>
       </td>
