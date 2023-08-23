@@ -35,6 +35,7 @@ export class ManageLabEditFormComponent {
       description: ['', [Validators.required]],
       resultType: [data.test.resultType, [Validators.required]],
       range: [data.test.normalRange],
+      unit: [data.test.unit],
     });
     this.test = data.test ;
   }

@@ -20,7 +20,7 @@ export class PendingLabTableComponent {
 
   displayedColumns = ['patientId', 'patientName', 'age', 'gender' , 'weight' , 'orderedBy' , 'channel' , 'status'];
 
-  patient =  [
+  patient = [
     {
       patientId: 1,
       patientName: 'John Doe Test',
@@ -32,135 +32,41 @@ export class PendingLabTableComponent {
       status: 'Collected',
       tests: [
         {
-            testName: 'Electrolyte Symphony',
-            result: null,
-            units: 'mmol/L',
-            referenceRange: 'Varies',
-            status: 'Pending',
-            department: 'Biochemistry',
-            sampleType: 'Blood'
+          id: 1,
+          testName: "FBC",
+          department: "Hematology",
+          category: "Hematology Tests",
+          price: "8000 TSH",
+          resultType: "Range",
+          unit: "g/mol",
+          minimumRange: 10,
+          maximumRange: 100,
+          result: null
         },
         {
-            testName: 'Mystical Microbes Panel',
-            result: null,
-            units: '',
-            referenceRange: 'Undetectable',
-            status: 'Pending',
-            department: 'Microbiology',
-            sampleType: 'Stool'
+          id: 2,
+          testName: "Sodium",
+          department: "Biochemistry",
+          category: "Electrolytes",
+          price: "3500 TSH",
+          resultType: "Observable",
+          normalRange: "Seen",
+          result: null
         },
         {
-            testName: 'Ethereal Energy Index',
-            result: null,
-            units: 'kWh/L',
-            referenceRange: '10 - 100 kWh/L',
-            status: 'Pending',
-            department: 'Metabolism',
-            sampleType: 'Urine'
-        },
-        {
-          testName: 'Vitality Spectrum',
-          result: 'Optimal',
-          units: '',
-          referenceRange: 'Optimal',
-          status: 'Completed',
-          department: 'Wellness',
-          sampleType: 'Blood'
-      }
-    ]
+          id: 3,
+          testName: "Stool Examination",
+          department: "Microbiology",
+          category: "Microbiological Tests",
+          price: "6000 TSH",
+          resultType: "Sided",
+          normalRange: "Positive",
+          result: null
+        }
+      ]
     },
     {
-      patientId: 1,
-      patientName: 'John Doe',
-      age: 30,
-      gender: 'Male',
-      weight: 75,
-      orderedBy: 'Dr. Smith',
-      channel: 'In-person',
-      status: 'Pending',
-      tests: [
-          {
-              testName: 'Electrolyte Symphony',
-              result: null,
-              units: 'mmol/L',
-              referenceRange: 'Varies',
-              status: 'Pending',
-              department: 'Biochemistry',
-              sampleType: 'Blood'
-          },
-          {
-              testName: 'Mystical Microbes Panel',
-              result: null,
-              units: '',
-              referenceRange: 'Undetectable',
-              status: 'Pending',
-              department: 'Microbiology',
-              sampleType: 'Stool'
-          },
-          {
-              testName: 'Ethereal Energy Index',
-              result: null,
-              units: 'kWh/L',
-              referenceRange: '10 - 100 kWh/L',
-              status: 'Pending',
-              department: 'Metabolism',
-              sampleType: 'Urine'
-          }
-      ]
-  },
-  {
       patientId: 2,
-      patientName: 'Jane Smith',
-      age: 28,
-      gender: 'Female',
-      weight: 62,
-      orderedBy: 'Dr. Johnson',
-      channel: 'Online',
-      status: 'Collected',
-      tests: [
-          {
-              testName: 'Neurotransmitter Harmony',
-              result: 'Normal',
-              units: '',
-              referenceRange: 'Normal',
-              status: 'Completed',
-              department: 'Neurology',
-              sampleType: 'Saliva'
-          },
-          {
-              testName: 'Vitality Spectrum',
-              result: 'Optimal',
-              units: '',
-              referenceRange: 'Optimal',
-              status: 'Completed',
-              department: 'Wellness',
-              sampleType: 'Blood'
-          }
-      ]
-  },
-  {
-      patientId: 3,
-      patientName: 'Alex Johnson',
-      age: 45,
-      gender: 'Non-binary',
-      weight: 80,
-      orderedBy: 'Dr. Brown',
-      channel: 'Phone',
-      status: 'Pending',
-      tests: [
-          {
-              testName: 'DNA Resonance Analysis',
-              result: null,
-              units: '',
-              referenceRange: 'Personalized',
-              status: 'Pending',
-              department: 'Genetics',
-              sampleType: 'Saliva'
-          }
-      ]
-  },
-  {
-      patientId: 4,
       patientName: 'Emily White',
       age: 22,
       gender: 'Female',
@@ -169,507 +75,237 @@ export class PendingLabTableComponent {
       channel: 'In-person',
       status: 'Collected',
       tests: [
-          {
-              testName: 'Metabolic Enigma',
-              result: null,
-              units: '',
-              referenceRange: 'Enigmatic',
-              status: 'Pending',
-              department: 'Metabolism',
-              sampleType: 'Blood'
-          },
-          {
-              testName: 'Chromosomal Kaleidoscope',
-              result: null,
-              units: '',
-              referenceRange: 'Multicolored',
-              status: 'Pending',
-              department: 'Genetics',
-              sampleType: 'Blood'
-          }
+        {
+          id: 11,
+          testName: "Lipid Profile",
+          department: "Biochemistry",
+          category: "Lipid Tests",
+          price: "4000 TSH",
+          resultType: "Range",
+          unit: "mg/dL",
+          minimumRange: 100,
+          maximumRange: 200,
+          result: null
+        },
+        {
+          id: 10,
+          testName: "Cholesterol",
+          department: "Biochemistry",
+          category: "Lipid Profile",
+          price: "3000 TSH",
+          resultType: "Sided",
+          normalRange: "Negative",
+          result: null
+        }
       ]
-  },
-  {
-    patientId: 5,
-    patientName: 'Michael Wilson',
-    age: 60,
-    gender: 'Male',
-    weight: 90,
-    orderedBy: 'Dr. Lee',
-    channel: 'Online',
-    status: 'Pending',
-    tests: [
+    },
+    {
+      patientId: 3,
+      patientName: 'Jane Smith',
+      age: 28,
+      gender: 'Female',
+      weight: 62,
+      orderedBy: 'Dr. Johnson',
+      channel: 'Online',
+      status: 'Collected',
+      tests: [
         {
-            testName: 'Complete Blood Count (CBC)',
-            result: null,
-            units: '',
-            referenceRange: 'Varies',
-            status: 'Pending',
-            department: 'Hematology',
-            sampleType: 'Blood'
+          id: 11,
+          testName: "Lipid Profile",
+          department: "Biochemistry",
+          category: "Lipid Tests",
+          price: "4000 TSH",
+          resultType: "Range",
+          unit: "mg/dL",
+          minimumRange: 100,
+          maximumRange: 200,
+          result: null
+        }
+      ]
+    },
+    {
+      patientId: 4,
+      patientName: 'Alex Johnson',
+      age: 45,
+      gender: 'Non-binary',
+      weight: 80,
+      orderedBy: 'Dr. Brown',
+      channel: 'Phone',
+      status: 'Pending',
+      tests: [
+        {
+          id: 1,
+          testName: "FBC",
+          department: "Hematology",
+          category: "Hematology Tests",
+          price: "8000 TSH",
+          resultType: "Range",
+          unit: "g/mol",
+          minimumRange: 10,
+          maximumRange: 100,
+          result: null
         },
         {
-            testName: 'Basic Metabolic Panel (BMP)',
-            result: null,
-            units: '',
-            referenceRange: 'Varies',
-            status: 'Pending',
-            department: 'Biochemistry',
-            sampleType: 'Blood'
+          id: 2,
+          testName: "Sodium",
+          department: "Biochemistry",
+          category: "Electrolytes",
+          price: "3500 TSH",
+          resultType: "Observable",
+          normalRange: "Seen",
+          result: null
         }
-    ]
-},
-{
-    patientId: 6,
-    patientName: 'Linda Martinez',
-    age: 38,
-    gender: 'Female',
-    weight: 68,
-    orderedBy: 'Dr. Rodriguez',
-    channel: 'In-person',
-    status: 'Collected',
-    tests: [
+      ]
+    },
+    {
+      patientId: 5,
+      patientName: 'Michael Wilson',
+      age: 60,
+      gender: 'Male',
+      weight: 90,
+      orderedBy: 'Dr. Lee',
+      channel: 'Online',
+      status: 'Pending',
+      tests: [
         {
-            testName: 'Urinalysis',
-            result: null,
-            units: '',
-            referenceRange: 'Varies',
-            status: 'Pending',
-            department: 'Clinical Pathology',
-            sampleType: 'Urine'
+          id: 3,
+          testName: "Stool Examination",
+          department: "Microbiology",
+          category: "Microbiological Tests",
+          price: "6000 TSH",
+          resultType: "Sided",
+          normalRange: "Positive",
+          result: null
         },
         {
-            testName: 'Thyroid Function Tests',
-            result: null,
-            units: '',
-            referenceRange: 'Varies',
-            status: 'Pending',
-            department: 'Endocrinology',
-            sampleType: 'Blood'
+          id: 4,
+          testName: "Urinalysis",
+          department: "Laboratory",
+          category: "Urinalysis",
+          price: "4000 TSH",
+          resultType: "Conditional",
+          normalRange: "Normal",
+          result: null
         }
-    ]
-},
-{
-    patientId: 7,
-    patientName: 'William Taylor',
-    age: 55,
-    gender: 'Male',
-    weight: 78,
-    orderedBy: 'Dr. Wilson',
-    channel: 'Phone',
-    status: 'Pending',
-    tests: [
+      ]
+    },
+    {
+      patientId: 6,
+      patientName: 'Linda Miller',
+      age: 35,
+      gender: 'Female',
+      weight: 68,
+      orderedBy: 'Dr. Harris',
+      channel: 'In-person',
+      status: 'Pending',
+      tests: [
         {
-            testName: 'Liver Function Tests',
-            result: null,
-            units: '',
-            referenceRange: 'Varies',
-            status: 'Pending',
-            department: 'Hepatology',
-            sampleType: 'Blood'
+          id: 5,
+          testName: "Blood Glucose",
+          department: "Biochemistry",
+          category: "Glucose Tests",
+          price: "2500 TSH",
+          resultType: "Conditional",
+          normalRange: "Normal",
+          result: null
         },
         {
-            testName: 'Lipid Profile',
-            result: null,
-            units: '',
-            referenceRange: 'Varies',
-            status: 'Pending',
-            department: 'Cardiology',
-            sampleType: 'Blood'
-        }
-    ]
-},
-{
-    patientId: 8,
-    patientName: 'Sophia Anderson',
-    age: 29,
-    gender: 'Female',
-    weight: 60,
-    orderedBy: 'Dr. Thompson',
-    channel: 'Online',
-    status: 'Done',
-    tests: [
-        {
-            testName: 'Pregnancy Test',
-            result: 'Negative',
-            units: '',
-            referenceRange: 'Negative',
-            status: 'Completed',
-            department: 'Obstetrics',
-            sampleType: 'Urine'
+          id: 6,
+          testName: "Thyroid Function Test",
+          department: "Endocrinology",
+          category: "Hormone Tests",
+          price: "7000 TSH",
+          resultType: "Conditional",
+          normalRange: "Normal",
+          result: null
         },
         {
-            testName: 'Blood Type and Rh Factor',
-            result: null,
-            units: '',
-            referenceRange: 'Varies',
-            status: 'Pending',
-            department: 'Blood Bank',
-            sampleType: 'Blood'
-        }
-    ]
-},
-{
-    patientId: 9,
-    patientName: 'David Harris',
-    age: 40,
-    gender: 'Male',
-    weight: 85,
-    orderedBy: 'Dr. Miller',
-    channel: 'In-person',
-    status: 'Done',
-    tests: [
-        {
-            testName: 'Prostate-Specific Antigen (PSA) Test',
-            result: null,
-            units: '',
-            referenceRange: 'Varies',
-            status: 'Pending',
-            department: 'Urology',
-            sampleType: 'Blood'
+          id: 7,
+          testName: "Tumor Marker Panel",
+          department: "Oncology",
+          category: "Tumor Markers",
+          price: "10000 TSH",
+          resultType: "Conditional",
+          normalRange: "Normal",
+          result: null
         },
         {
-            testName: 'C-Reactive Protein (CRP) Test',
-            result: null,
-            units: '',
-            referenceRange: 'Varies',
-            status: 'Pending',
-            department: 'Inflammation',
-            sampleType: 'Blood'
+          id: 8,
+          testName: "Serology",
+          department: "Immunology",
+          category: "Serological Tests",
+          price: "5500 TSH",
+          resultType: "Sided",
+          normalRange: "Negative",
+          result: null
         }
-    ]
-},
-{
-    patientId: 10,
-    patientName: 'Olivia Clark',
-    age: 24,
-    gender: 'Female',
-    weight: 55,
-    orderedBy: 'Dr. Evans',
-    channel: 'Online',
-    status: 'Collected',
-    tests: [
+      ]
+    },
+    {
+      patientId: 5,
+      patientName: 'Michael Wilson',
+      age: 60,
+      gender: 'Male',
+      weight: 90,
+      orderedBy: 'Dr. Lee',
+      channel: 'Online',
+      status: 'Pending',
+      tests: [
         {
-            testName: 'Thyroid Stimulating Hormone (TSH) Test',
-            result: null,
-            units: '',
-            referenceRange: 'Varies',
-            status: 'Pending',
-            department: 'Endocrinology',
-            sampleType: 'Blood'
+          id: 3,
+          testName: "Stool Examination",
+          department: "Microbiology",
+          category: "Microbiological Tests",
+          price: "6000 TSH",
+          resultType: "Sided",
+          normalRange: "Positive",
+          result: null
         },
         {
-            testName: 'Uric Acid Test',
-            result: null,
-            units: '',
-            referenceRange: 'Varies',
-            status: 'Pending',
-            department: 'Rheumatology',
-            sampleType: 'Blood'
+          id: 4,
+          testName: "Urinalysis",
+          department: "Laboratory",
+          category: "Urinalysis",
+          price: "4000 TSH",
+          resultType: "Conditional",
+          normalRange: "Normal",
+          result: null
         }
-    ]
-},
-{
-  patientId: 11,
-  patientName: 'Robert Allen',
-  age: 50,
-  gender: 'Male',
-  weight: 82,
-  orderedBy: 'Dr. King',
-  channel: 'Phone',
-  status: 'Pending',
-  tests: [
-      {
-          testName: 'Lipid Profile',
-          result: null,
-          units: '',
-          referenceRange: 'Normal',
-          status: 'Pending',
-          department: 'Cardiology',
-          sampleType: 'Blood'
-      },
-      {
-          testName: 'Glucose Test',
-          result: null,
-          units: '',
-          referenceRange: '70 - 140 mg/dL',
-          status: 'Pending',
-          department: 'Endocrinology',
-          sampleType: 'Blood'
-      }
-  ]
-},
-{
-  patientId: 12,
-  patientName: 'Ava Scott',
-  age: 32,
-  gender: 'Female',
-  weight: 63,
-  orderedBy: 'Dr. Green',
-  channel: 'In-person',
-  status: 'Collected',
-  tests: [
-      {
-          testName: 'Complete Blood Count (CBC)',
-          result: null,
-          units: '',
-          referenceRange: 'Normal',
-          status: 'Pending',
-          department: 'Hematology',
-          sampleType: 'Blood'
-      },
-      {
-          testName: 'Thyroid Function Tests',
-          result: null,
-          units: '',
-          referenceRange: 'Normal',
-          status: 'Pending',
-          department: 'Endocrinology',
-          sampleType: 'Blood'
-      }
-  ]
-},
-{
-  patientId: 13,
-  patientName: 'James Perez',
-  age: 28,
-  gender: 'Male',
-  weight: 70,
-  orderedBy: 'Dr. Hall',
-  channel: 'Online',
-  status: 'Done',
-  tests: [
-      {
-          testName: 'Hemoglobin A1c Test',
-          result: '5.2%',
-          units: '',
-          referenceRange: '4.8% - 5.6%',
-          status: 'Completed',
-          department: 'Endocrinology',
-          sampleType: 'Blood'
-      },
-      {
-          testName: 'Liver Function Tests',
-          result: null,
-          units: '',
-          referenceRange: 'Normal',
-          status: 'Pending',
-          department: 'Hepatology',
-          sampleType: 'Blood'
-      }
-  ]
-},
-{
-  patientId: 14,
-  patientName: 'Mia Jackson',
-  age: 26,
-  gender: 'Female',
-  weight: 58,
-  orderedBy: 'Dr. Turner',
-  channel: 'In-person',
-  status: 'Collected',
-  tests: [
-      {
-          testName: 'Renal Function Panel',
-          result: null,
-          units: '',
-          referenceRange: 'Normal',
-          status: 'Pending',
-          department: 'Nephrology',
-          sampleType: 'Blood'
-      },
-      {
-          testName: 'Urinalysis',
-          result: null,
-          units: '',
-          referenceRange: 'Normal',
-          status: 'Pending',
-          department: 'Clinical Pathology',
-          sampleType: 'Urine'
-      }
-  ]
-},
-{
-  patientId: 15,
-  patientName: 'Daniel Martinez',
-  age: 35,
-  gender: 'Male',
-  weight: 76,
-  orderedBy: 'Dr. Martinez',
-  channel: 'Phone',
-  status: 'Pending',
-  tests: [
-      {
-          testName: 'Thyroid Stimulating Hormone (TSH) Test',
-          result: null,
-          units: '',
-          referenceRange: 'Normal',
-          status: 'Pending',
-          department: 'Endocrinology',
-          sampleType: 'Blood'
-      },
-      {
-          testName: 'C-Reactive Protein (CRP) Test',
-          result: null,
-          units: '',
-          referenceRange: 'Normal',
-          status: 'Pending',
-          department: 'Inflammation',
-          sampleType: 'Blood'
-      }
-  ]
-},
-{
-  patientId: 16,
-  patientName: 'Isabella Johnson',
-  age: 31,
-  gender: 'Female',
-  weight: 64,
-  orderedBy: 'Dr. Hernandez',
-  channel: 'Online',
-  status: 'Done',
-  tests: [
-      {
-          testName: 'Vitamin D Test',
-          result: '30 ng/mL',
-          units: '',
-          referenceRange: '30 - 100 ng/mL',
-          status: 'Completed',
-          department: 'Endocrinology',
-          sampleType: 'Blood'
-      },
-      {
-          testName: 'Iron Panel',
-          result: null,
-          units: '',
-          referenceRange: '50 - 150 mcg/dL',
-          status: 'Pending',
-          department: 'Hematology',
-          sampleType: 'Blood'
-      }
-  ]
-},
-{
-  patientId: 17,
-  patientName: 'Michael Brown',
-  age: 48,
-  gender: 'Male',
-  weight: 88,
-  orderedBy: 'Dr. Young',
-  channel: 'In-person',
-  status: 'Pending',
-  tests: [
-      {
-          testName: 'Cardiac Enzyme Panel',
-          result: null,
-          units: '',
-          referenceRange: 'Varies',
-          status: 'Pending',
-          department: 'Cardiology',
-          sampleType: 'Blood'
-      },
-      {
-          testName: 'Electrocardiogram (ECG)',
-          result: null,
-          units: '',
-          referenceRange: 'Normal',
-          status: 'Pending',
-          department: 'Cardiology',
-          sampleType: 'None'
-      }
-  ]
-},
-{
-  patientId: 18,
-  patientName: 'Sophia Taylor',
-  age: 29,
-  gender: 'Female',
-  weight: 59,
-  orderedBy: 'Dr. Adams',
-  channel: 'Online',
-  status: 'Collected',
-  tests: [
-      {
-          testName: 'Blood Type and Rh Factor',
-          result: null,
-          units: '',
-          referenceRange: 'Varies',
-          status: 'Pending',
-          department: 'Blood Bank',
-          sampleType: 'Blood'
-      },
-      {
-          testName: 'Lipid Profile',
-          result: null,
-          units: '',
-          referenceRange: 'Normal',
-          status: 'Pending',
-          department: 'Cardiology',
-          sampleType: 'Blood'
-      }
-  ]
-},
-{
-  patientId: 19,
-  patientName: 'William Jackson',
-  age: 42,
-  gender: 'Male',
-  weight: 80,
-  orderedBy: 'Dr. Scott',
-  channel: 'Phone',
-  status: 'Pending',
-  tests: [
-      {
-          testName: 'Liver Function Tests',
-          result: null,
-          units: '',
-          referenceRange: 'Normal',
-          status: 'Pending',
-          department: 'Hepatology',
-          sampleType: 'Blood'
-      },
-      {
-          testName: 'Kidney Function Panel',
-          result: null,
-          units: '',
-          referenceRange: 'Normal',
-          status: 'Pending',
-          department: 'Nephrology',
-          sampleType: 'Blood'
-      }
-  ]
-},
-{
-  patientId: 20,
-  patientName: 'Olivia Smith',
-  age: 27,
-  gender: 'Female',
-  weight: 61,
-  orderedBy: 'Dr. Allen',
-  channel: 'In-person',
-  status: 'Collected',
-  tests: [
-      {
-          testName: 'Urinalysis',
-          result: null,
-          units: '',
-          referenceRange: 'Normal',
-          status: 'Pending',
-          department: 'Clinical Pathology',
-          sampleType: 'Urine'
-      },
-      {
-          testName: 'Thyroid Function Tests',
-          result: null,
-          units: '',
-          referenceRange: 'Normal',
-          status: 'Pending',
-          department: 'Endocrinology',
-          sampleType: 'Blood'
-      }
-  ]
-}
-];
+      ]
+    },
+    {
+      patientId: 6,
+      patientName: 'Michael Wilson',
+      age: 60,
+      gender: 'Male',
+      weight: 90,
+      orderedBy: 'Dr. Lee',
+      channel: 'Online',
+      status: 'Complete',
+      tests: [
+        {
+          id: 3,
+          testName: "Stool Examination",
+          department: "Microbiology",
+          category: "Microbiological Tests",
+          price: "6000 TSH",
+          resultType: "Sided",
+          normalRange: "Positive",
+          result: 'Negative'
+        },
+        {
+          id: 4,
+          testName: "Urinalysis",
+          department: "Laboratory",
+          category: "Urinalysis",
+          price: "4000 TSH",
+          resultType: "Conditional",
+          normalRange: "Normal",
+          result: 'Abnormal'
+        }
+      ]
+    },
+  ];
 
   dataSource = new MatTableDataSource(this.patient);
 

@@ -40,13 +40,15 @@
         <textarea matInput formControlName="description" placeholder="Description"></textarea>
       </mat-form-field>
     </div>
-    <h5>Normal range</h5>
-    <div class="mb-4">
-      <mat-form-field appearance="fill" class="w-1/2">
-        <mat-label>Range</mat-label>
-        <input matInput formControlName="range" placeholder="Normal Range">
+    <div class="flex mb-4">
+      <mat-form-field appearance="fill" class="w-1/2 mr-3">
+        <mat-label>Normal range</mat-label>
+        <input matInput formControlName="range" placeholder="*** - ***">
       </mat-form-field>
-      {{test.unit}}
+      <mat-form-field appearance="fill" class="w-1/2 ml-3">
+        <mat-label>Unit</mat-label>
+        <input matInput formControlName="unit" placeholder="Unit">
+      </mat-form-field>
     </div>
     <div class="flex justify-end mt-4">
       <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" (click)="save()">

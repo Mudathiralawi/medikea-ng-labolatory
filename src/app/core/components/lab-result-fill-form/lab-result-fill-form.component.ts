@@ -20,12 +20,14 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
   styleUrls: ['./lab-result-fill-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
+
 export class LabResultFillFormComponent implements OnInit {
 
   collectSample: FormGroup;
   patient: any ;
   currentDate: Date = new Date();
-  currentTime: string = '';
+  currentTime: string = '' ;
+  postion: number = 0.5;
 
   constructor(
     public dialogRef: MatDialogRef<LabResultFillFormComponent>,
@@ -70,5 +72,37 @@ export class LabResultFillFormComponent implements OnInit {
 
     return `${value}`;
   }
+
+  captureInput(testName: any){
+    const index = this.patient.tests.findIndex((test: any) => test.testName === testName);
+    const inputValue = (document.getElementById(testName) as HTMLInputElement)?.value;
+    if (index !== -1) {
+      this.patient.tests[index].result = inputValue;
+    }
+  }
+
+  calculateMarkerPosition(row: any): string {
+    if (row.result <= row.minimumRange) {
+      return (row.result / row.minimumRange) * 33.3 + '%';
+    } else if (row.result >= row.maximumRange) {
+      const result = row.result - row.maximumRange;
+      if (result > 33.2) {
+        return '100%';
+      } else {
+        return (result + 66.6) + '%';
+      }
+    } else {
+      return ((row.result - row.minimumRange) / (row.maximumRange - row.minimumRange))*33.3 + 33.3 + '%';
+    }
+  }
+
+  calculateMarkerPositionBinary(row: any): string {
+    if (row.result === row.normalRange) {
+      return '25%';
+    } else {
+      return '75%';
+    }
+  }
+
 
 }

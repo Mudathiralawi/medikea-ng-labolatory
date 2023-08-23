@@ -17,46 +17,142 @@ export class DoneLabTableComponent {
 
   displayedColumns = ['patientId', 'patientName', 'age', 'gender' , 'weight' , 'orderedBy' , 'channel' , 'status'];
 
-  patient =  [
+  patient = [
     {
       patientId: 1,
-      patientName: 'John Doe',
+      patientName: 'John Doe Test',
       age: 30,
       gender: 'Male',
       weight: 75,
       orderedBy: 'Dr. Smith',
       channel: 'In-person',
-      status: 'Pending'
+      status: 'Collected',
+      tests: [
+        {
+          id: 1,
+          testName: "FBC",
+          department: "Hematology",
+          category: "Hematology Tests",
+          price: "8000 TSH",
+          resultType: "Range",
+          unit: "g/mol",
+          minimumRange: 10,
+          maximumRange: 100,
+          result: null
+        },
+        {
+          id: 2,
+          testName: "Sodium",
+          department: "Biochemistry",
+          category: "Electrolytes",
+          price: "3500 TSH",
+          resultType: "Observable",
+          normalRange: "Seen",
+          result: null
+        },
+        {
+          id: 3,
+          testName: "Stool Examination",
+          department: "Microbiology",
+          category: "Microbiological Tests",
+          price: "6000 TSH",
+          resultType: "Sided",
+          normalRange: "Positive",
+          result: null
+        }
+      ]
     },
     {
       patientId: 2,
-      patientName: 'Jane Smith',
-      age: 28,
-      gender: 'Female',
-      weight: 62,
-      orderedBy: 'Dr. Johnson',
-      channel: 'Online',
-      status: 'Collected'
-    },
-    {
-      patientId: 3,
-      patientName: 'Alex Johnson',
-      age: 45,
-      gender: 'Non-binary',
-      weight: 80,
-      orderedBy: 'Dr. Brown',
-      channel: 'Phone',
-      status: 'Pending'
-    },
-    {
-      patientId: 4,
       patientName: 'Emily White',
       age: 22,
       gender: 'Female',
       weight: 50,
       orderedBy: 'Dr. Davis',
       channel: 'In-person',
-      status: 'Collected'
+      status: 'Collected',
+      tests: [
+        {
+          id: 11,
+          testName: "Lipid Profile",
+          department: "Biochemistry",
+          category: "Lipid Tests",
+          price: "4000 TSH",
+          resultType: "Range",
+          unit: "mg/dL",
+          minimumRange: 100,
+          maximumRange: 200,
+          result: null
+        },
+        {
+          id: 10,
+          testName: "Cholesterol",
+          department: "Biochemistry",
+          category: "Lipid Profile",
+          price: "3000 TSH",
+          resultType: "Sided",
+          normalRange: "Negative",
+          result: null
+        }
+      ]
+    },
+    {
+      patientId: 3,
+      patientName: 'Jane Smith',
+      age: 28,
+      gender: 'Female',
+      weight: 62,
+      orderedBy: 'Dr. Johnson',
+      channel: 'Online',
+      status: 'Collected',
+      tests: [
+        {
+          id: 11,
+          testName: "Lipid Profile",
+          department: "Biochemistry",
+          category: "Lipid Tests",
+          price: "4000 TSH",
+          resultType: "Range",
+          unit: "mg/dL",
+          minimumRange: 100,
+          maximumRange: 200,
+          result: null
+        }
+      ]
+    },
+    {
+      patientId: 4,
+      patientName: 'Alex Johnson',
+      age: 45,
+      gender: 'Non-binary',
+      weight: 80,
+      orderedBy: 'Dr. Brown',
+      channel: 'Phone',
+      status: 'Pending',
+      tests: [
+        {
+          id: 1,
+          testName: "FBC",
+          department: "Hematology",
+          category: "Hematology Tests",
+          price: "8000 TSH",
+          resultType: "Range",
+          unit: "g/mol",
+          minimumRange: 10,
+          maximumRange: 100,
+          result: null
+        },
+        {
+          id: 2,
+          testName: "Sodium",
+          department: "Biochemistry",
+          category: "Electrolytes",
+          price: "3500 TSH",
+          resultType: "Observable",
+          normalRange: "Seen",
+          result: null
+        }
+      ]
     },
     {
       patientId: 5,
@@ -66,160 +162,147 @@ export class DoneLabTableComponent {
       weight: 90,
       orderedBy: 'Dr. Lee',
       channel: 'Online',
-      status: 'Pending'
+      status: 'Pending',
+      tests: [
+        {
+          id: 3,
+          testName: "Stool Examination",
+          department: "Microbiology",
+          category: "Microbiological Tests",
+          price: "6000 TSH",
+          resultType: "Sided",
+          normalRange: "Positive",
+          result: null
+        },
+        {
+          id: 4,
+          testName: "Urinalysis",
+          department: "Laboratory",
+          category: "Urinalysis",
+          price: "4000 TSH",
+          resultType: "Conditional",
+          normalRange: "Normal",
+          result: null
+        }
+      ]
     },
     {
       patientId: 6,
-      patientName: 'Linda Martinez',
-      age: 38,
+      patientName: 'Linda Miller',
+      age: 35,
       gender: 'Female',
       weight: 68,
-      orderedBy: 'Dr. Rodriguez',
+      orderedBy: 'Dr. Harris',
       channel: 'In-person',
-      status: 'Collected'
+      status: 'Pending',
+      tests: [
+        {
+          id: 5,
+          testName: "Blood Glucose",
+          department: "Biochemistry",
+          category: "Glucose Tests",
+          price: "2500 TSH",
+          resultType: "Conditional",
+          normalRange: "Normal",
+          result: null
+        },
+        {
+          id: 6,
+          testName: "Thyroid Function Test",
+          department: "Endocrinology",
+          category: "Hormone Tests",
+          price: "7000 TSH",
+          resultType: "Conditional",
+          normalRange: "Normal",
+          result: null
+        },
+        {
+          id: 7,
+          testName: "Tumor Marker Panel",
+          department: "Oncology",
+          category: "Tumor Markers",
+          price: "10000 TSH",
+          resultType: "Conditional",
+          normalRange: "Normal",
+          result: null
+        },
+        {
+          id: 8,
+          testName: "Serology",
+          department: "Immunology",
+          category: "Serological Tests",
+          price: "5500 TSH",
+          resultType: "Sided",
+          normalRange: "Negative",
+          result: null
+        }
+      ]
     },
     {
-      patientId: 7,
-      patientName: 'William Taylor',
-      age: 55,
+      patientId: 5,
+      patientName: 'Michael Wilson',
+      age: 60,
       gender: 'Male',
-      weight: 78,
-      orderedBy: 'Dr. Wilson',
-      channel: 'Phone',
-      status: 'Pending'
-    },
-    {
-      patientId: 8,
-      patientName: 'Sophia Anderson',
-      age: 29,
-      gender: 'Female',
-      weight: 60,
-      orderedBy: 'Dr. Thompson',
+      weight: 90,
+      orderedBy: 'Dr. Lee',
       channel: 'Online',
-      status: 'Done'
+      status: 'Pending',
+      tests: [
+        {
+          id: 3,
+          testName: "Stool Examination",
+          department: "Microbiology",
+          category: "Microbiological Tests",
+          price: "6000 TSH",
+          resultType: "Sided",
+          normalRange: "Positive",
+          result: null
+        },
+        {
+          id: 4,
+          testName: "Urinalysis",
+          department: "Laboratory",
+          category: "Urinalysis",
+          price: "4000 TSH",
+          resultType: "Conditional",
+          normalRange: "Normal",
+          result: null
+        }
+      ]
     },
     {
-      patientId: 9,
-      patientName: 'David Harris',
-      age: 40,
+      patientId: 6,
+      patientName: 'Michael Wilson',
+      age: 60,
       gender: 'Male',
-      weight: 85,
-      orderedBy: 'Dr. Miller',
-      channel: 'In-person',
-      status: 'Done'
-    },
-    {
-      patientId: 10,
-      patientName: 'Olivia Clark',
-      age: 24,
-      gender: 'Female',
-      weight: 55,
-      orderedBy: 'Dr. Evans',
+      weight: 90,
+      orderedBy: 'Dr. Lee',
       channel: 'Online',
-      status: 'Collected'
+      status: 'Complete',
+      tests: [
+        {
+          id: 3,
+          testName: "Stool Examination",
+          department: "Microbiology",
+          category: "Microbiological Tests",
+          price: "6000 TSH",
+          resultType: "Sided",
+          normalRange: "Positive",
+          result: 'Negative'
+        },
+        {
+          id: 4,
+          testName: "Urinalysis",
+          department: "Laboratory",
+          category: "Urinalysis",
+          price: "4000 TSH",
+          resultType: "Conditional",
+          normalRange: "Normal",
+          result: 'Abnormal'
+        }
+      ]
     },
-    {
-      patientId: 11,
-      patientName: 'Robert Allen',
-      age: 50,
-      gender: 'Male',
-      weight: 82,
-      orderedBy: 'Dr. King',
-      channel: 'Phone',
-      status: 'Pending'
-    },
-    {
-      patientId: 12,
-      patientName: 'Ava Scott',
-      age: 32,
-      gender: 'Female',
-      weight: 63,
-      orderedBy: 'Dr. Green',
-      channel: 'In-person',
-      status: 'Collected'
-    },
-    {
-      patientId: 13,
-      patientName: 'James Perez',
-      age: 28,
-      gender: 'Male',
-      weight: 70,
-      orderedBy: 'Dr. Hall',
-      channel: 'Online',
-      status: 'Done'
-    },
-    {
-      patientId: 14,
-      patientName: 'Mia Jackson',
-      age: 26,
-      gender: 'Female',
-      weight: 58,
-      orderedBy: 'Dr. Turner',
-      channel: 'In-person',
-      status: 'Collected'
-    },
-    {
-      patientId: 15,
-      patientName: 'Daniel Martinez',
-      age: 35,
-      gender: 'Male',
-      weight: 76,
-      orderedBy: 'Dr. Martinez',
-      channel: 'Phone',
-      status: 'Pending'
-    },
-    {
-      patientId: 16,
-      patientName: 'Isabella Johnson',
-      age: 31,
-      gender: 'Female',
-      weight: 64,
-      orderedBy: 'Dr. Hernandez',
-      channel: 'Online',
-      status: 'Done'
-    },
-    {
-      patientId: 17,
-      patientName: 'Michael Brown',
-      age: 48,
-      gender: 'Male',
-      weight: 88,
-      orderedBy: 'Dr. Young',
-      channel: 'In-person',
-      status: 'Pending'
-    },
-    {
-      patientId: 18,
-      patientName: 'Sophia Taylor',
-      age: 29,
-      gender: 'Female',
-      weight: 59,
-      orderedBy: 'Dr. Adams',
-      channel: 'Online',
-      status: 'Collected'
-    },
-    {
-      patientId: 19,
-      patientName: 'William Jackson',
-      age: 42,
-      gender: 'Male',
-      weight: 80,
-      orderedBy: 'Dr. Scott',
-      channel: 'Phone',
-      status: 'Pending'
-    },
-    {
-      patientId: 20,
-      patientName: 'Olivia Smith',
-      age: 27,
-      gender: 'Female',
-      weight: 61,
-      orderedBy: 'Dr. Allen',
-      channel: 'In-person',
-      status: 'Collected'
-    }
   ];
-
   dataSource = new MatTableDataSource(this.patient);
 
   @ViewChild(MatPaginator) paginator: any = MatPaginator;

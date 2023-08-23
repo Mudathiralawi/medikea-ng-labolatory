@@ -10,6 +10,7 @@ import { MyAccountDashboardComponent } from '../../core/components/my-account-da
   styleUrls: ['./account.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
+
 export default class AccountComponent {
 
 }
