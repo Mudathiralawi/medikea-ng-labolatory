@@ -1,0 +1,237 @@
+<div class="w-full h-full flex justify-center overflow-y-auto items-center bg-white">
+  <div class="w-full relative overflow-visible max-h-[90vh]">
+    <div class="w-full relative">
+      <a (click)="close()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="absolute top-0 right-0 mt-2 mr-2 w-6 h-6 cursor-pointer">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </a>
+        <div class="overflow-x-auto px-2 mx-4 pt-2 pb-2">
+          <h2 class="text-xl font-semibold mt-4 mb-4 text-center">Patient lab results</h2>
+          <table class="min-w-full">
+            <thead>
+              <tr>
+                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                  Patient Id
+                </th>
+                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                  Patient name
+                </th>
+                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                  Age
+                </th>
+                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                  Gender
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bg-gray-100 border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                  {{patient.patientId}}
+                </td>
+                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                  {{patient.patientName}}
+                </td>
+                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                  {{patient.age}}
+                </td>
+                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                  {{patient.gender}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="inline-block min-w-full p-2">
+          <div class="overflow-auto">
+            <table class="w-full">
+              <thead class="bg-gray-200 border-b">
+                <tr>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                    Lab tests
+                  </th>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                    Status
+                  </th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let row of patient.tests">
+                <tr class="bg-white border-b transition w-2/3 duration-300 ease-in-out hover:bg-gray-100">
+                  <ng-container *ngIf="row.resultType === 'Range'">
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      <div class="block">
+                        {{ row.testName }}
+                        <p class="text-xs">measured in {{row.unit}}</p>
+                        <div class="flex">
+                          <div class="w-full mt-4 mb-1 relative">
+                            <div class="relative h-4">
+                              <div class="absolute w-1/3 rounded-l-full h-3 bg-yellow-400"></div>
+                              <div class="absolute w-1/3 h-3 bg-green-400 left-1/3"></div>
+                              <div class="absolute w-1/3 rounded-r-full h-3 bg-red-400 right-0"></div>
+                              <div class="absolute top-0 h-4 left-1/3 transform -translate-x-1/2">
+                                <div class="w-px h-full border-dotted border-t border border-black"></div>
+                                <span class="absolute top-full left-1/2 transform -translate-x-1/2 text-black text-sm font-bold">{{row.minimumRange}}</span>
+                              </div>
+                              <div class="absolute top-0 h-4 right-1/3 transform translate-x-1/2">
+                                <div class="w-px h-full border-dotted border-t border border-black"></div>
+                                <span class="absolute top-full left-1/2 transform -translate-x-1/2 text-black text-sm font-bold">{{row.maximumRange}}</span>
+                              </div>
+                              <div class="absolute top-0 h-3 transform translate-x-1/2" [style.left]="calculateMarkerPosition(row)">
+                                <div class="w-px h-full border-solid border-t border border-black"></div>
+                                <span class="absolute bottom-full left-1/2 transform -translate-x-1/2 text-black text-sm font-bold">{{row.result}}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      <ng-container *ngIf="row.result > row.maximumRange || row.result < row.minimumRange; else normal">
+                        <p class="ml-3 flex">
+                          <svg class="w-6 h-6 mr-2 text-red-500 dark:text-red-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m13 7-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                          </svg>Abnormal
+                        </p>
+                      </ng-container>
+                      <ng-template #normal>
+                        <p class="ml-3 flex">
+                          <svg class="w-6 h-6 mr-2 text-green-500 dark:text-green-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                          </svg>Normal
+                        </p>
+                      </ng-template>
+                  </td>
+                  </ng-container>
+                  <ng-container *ngIf="row.resultType === 'Observable'">
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      <div class="block">
+                        {{ row.testName }}
+                        <p class="text-xs">measured in visibility</p>
+                        <div class="flex">
+                          <div class="w-full mt-4 mb-1 ml-2 relative">
+                            <div class="relative h-4">
+                              <div class="absolute w-1/2 h-3 rounded-l-full bg-green-400 left-0"></div>
+                              <div class="absolute w-1/2 h-3 rounded-r-full bg-red-400 right-0"></div>
+                              <div class="absolute top-0 h-4 left-1/4 transform -translate-x-1/2">
+                                <span class="absolute top-full left-1/2 transform -translate-x-1/2 text-black text-sm font-bold">{{row.normalRange}}</span>
+                              </div>
+                              <div class="absolute top-0 h-3 transform translate-x-1/2" [style.left]="calculateMarkerPositionBinary(row)">
+                                <div class="w-px h-full border-solid border-t border border-black"></div>
+                                <span class="absolute bottom-full left-1/2 transform -translate-x-1/2 text-black text-sm font-bold">{{row.result}}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      <ng-container *ngIf="row.normalRange === row.result; else Normal">
+                        <p class="ml-3 flex">
+                          <svg class="w-6 h-6 mr-2 text-green-500 dark:text-green-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                          </svg>Normal
+                        </p>
+                      </ng-container>
+                      <ng-template #Normal>
+                        <p class="ml-3 flex">
+                          <svg class="w-6 h-6 mr-2 text-red-500 dark:text-red-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m13 7-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                          </svg>Abnormal
+                        </p>
+                      </ng-template>
+                    </td>
+                  </ng-container>
+                  <ng-container *ngIf="row.resultType === 'Sided'">
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      <div class="block">
+                        {{ row.testName }}
+                        <p class="text-xs">measured in +/-</p>
+                        <div class="flex">
+                          <div class="w-full mt-4 mb-1 ml-2 relative">
+                            <div class="relative h-4">
+                              <div class="absolute w-1/2 h-3 rounded-l-full bg-green-400 left-0"></div>
+                              <div class="absolute w-1/2 h-3 rounded-r-full bg-red-400 right-0"></div>
+                              <div class="absolute top-0 h-4 left-1/4 transform -translate-x-1/2">
+                                <span class="absolute top-full left-1/2 transform -translate-x-1/2 text-black text-sm font-bold">{{row.normalRange}}</span>
+                              </div>
+                              <div class="absolute top-0 h-3 transform translate-x-1/2" [style.left]="calculateMarkerPositionBinary(row)">
+                                <div class="w-px h-full border-solid border-t border border-black"></div>
+                                <span class="absolute bottom-full left-1/2 transform -translate-x-1/2 text-black text-sm font-bold">{{row.result}}</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      <ng-container *ngIf="row.normalRange === row.result; else Normal">
+                        <p class="ml-3 flex">
+                          <svg class="w-6 h-6 mr-2 text-green-500 dark:text-green-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                          </svg>Normal
+                        </p>
+                      </ng-container>
+                      <ng-template #Normal>
+                        <p class="ml-3 flex">
+                          <svg class="w-6 h-6 mr-2 text-red-500 dark:text-red-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m13 7-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                          </svg>Abnormal
+                        </p>
+                      </ng-template>
+                    </td>
+                  </ng-container>
+                  <ng-container *ngIf="row.resultType === 'Conditional'">
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      <div class="block">
+                        {{ row.testName }}
+                        <p class="text-xs">measured in status</p>
+                        <div class="flex">
+                          <div class="w-full mt-4 mb-1 ml-2 relative">
+                            <div class="relative h-4">
+                              <div class="absolute w-1/2 h-3 rounded-l-full bg-green-400 left-0"></div>
+                              <div class="absolute w-1/2 h-3 rounded-r-full bg-red-400 right-0"></div>
+                              <div class="absolute top-0 h-4 left-1/4 transform -translate-x-1/2">
+                                <span class="absolute top-full left-1/2 transform -translate-x-1/2 text-black text-sm font-bold">{{row.normalRange}}</span>
+                              </div>
+                              <div class="absolute top-0 h-3 transform translate-x-1/2" [style.left]="calculateMarkerPositionBinary(row)">
+                                <div class="w-px h-full border-solid border-t border border-black"></div>
+                                <span class="absolute bottom-full left-1/2 transform -translate-x-1/2 text-black text-sm font-bold">{{row.result}}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      <ng-container *ngIf="row.normalRange === row.result; else Normal">
+                        <p class="ml-3 flex">
+                          <svg class="w-6 h-6 mr-2 text-green-500 dark:text-green-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                          </svg>Normal
+                        </p>
+                      </ng-container>
+                      <ng-template #Normal>
+                        <p class="ml-3 flex">
+                          <svg class="w-6 h-6 mr-2 text-red-500 dark:text-red-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m13 7-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                          </svg>Abnormal
+                        </p>
+                      </ng-template>
+                    </td>
+                  </ng-container>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="flex justify-end m-4">
+          <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" (click)="close()">
+            Close
+          </button>
+        </div>
+    </div>
+  </div>
+</div>

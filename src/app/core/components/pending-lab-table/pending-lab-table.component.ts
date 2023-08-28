@@ -6,6 +6,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { SampleCollectionFillFormComponent } from '../../components/sample-collection-fill-form/sample-collection-fill-form.component';
 import { LabResultFillFormComponent } from '../../components/lab-result-fill-form/lab-result-fill-form.component';
+import { PatientResultComponent } from '../../components/patient-result/patient-result.component';
 
 
 @Component({
@@ -302,6 +303,28 @@ export class PendingLabTableComponent {
           resultType: "Conditional",
           normalRange: "Normal",
           result: 'Abnormal'
+        },
+        {
+          id: 1,
+          testName: "FBC",
+          department: "Hematology",
+          category: "Hematology Tests",
+          price: "8000 TSH",
+          resultType: "Range",
+          unit: "g/mol",
+          minimumRange: 10,
+          maximumRange: 100,
+          result: 9
+        },
+        {
+          id: 2,
+          testName: "Sodium",
+          department: "Biochemistry",
+          category: "Electrolytes",
+          price: "3500 TSH",
+          resultType: "Observable",
+          normalRange: "Seen",
+          result: 'Unseen'
         }
       ]
     },
@@ -347,6 +370,12 @@ export class PendingLabTableComponent {
 
   postResult(patient: any){
     this.openFillResult(patient);
+  }
+
+  results(patient : any){
+    this.dialog.open(PatientResultComponent, {
+      data: patient
+    });
   }
 
 }

@@ -92,7 +92,7 @@ export class LabResultFillFormComponent implements OnInit {
         return (result + 66.6) + '%';
       }
     } else {
-      return ((row.result - row.minimumRange) / (row.maximumRange - row.minimumRange))*33.3 + 33.3 + '%';
+      return ((row.result - row.minimumRange) / (row.maximumRange - row.minimumRange)) * 33.3 + 33.3 + '%';
     }
   }
 

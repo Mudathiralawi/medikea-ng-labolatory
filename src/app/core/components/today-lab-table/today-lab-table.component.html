@@ -55,7 +55,7 @@
           {{ element.status }} <button class="text-xs bg-yellow-400 py-1 px-2 rounded-lg ml-2" (click)="postResult(element)">Post-result</button>
           </ng-container>
           <ng-template #Good>
-            {{ element.status }}<button class="text-xs bg-yellow-400 py-1 px-2 rounded-lg ml-2">See result</button>
+            {{ element.status }}<button class="text-xs bg-yellow-400 py-1 px-2 rounded-lg ml-2" (click)="results(element)">See result</button>
           </ng-template>
         </ng-template>
       </td>

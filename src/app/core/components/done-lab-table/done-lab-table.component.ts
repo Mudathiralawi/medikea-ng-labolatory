@@ -4,6 +4,8 @@ import { MatTableModule , MatTableDataSource  } from '@angular/material/table';
 import { MatPaginatorModule , MatPaginator } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
+import { PatientResultComponent } from '../../components/patient-result/patient-result.component';
+
 
 @Component({
   selector: 'app-done-lab-table',
@@ -299,16 +301,47 @@ export class DoneLabTableComponent {
           resultType: "Conditional",
           normalRange: "Normal",
           result: 'Abnormal'
+        },
+        {
+          id: 1,
+          testName: "FBC",
+          department: "Hematology",
+          category: "Hematology Tests",
+          price: "8000 TSH",
+          resultType: "Range",
+          unit: "g/mol",
+          minimumRange: 10,
+          maximumRange: 100,
+          result: 9
+        },
+        {
+          id: 2,
+          testName: "Sodium",
+          department: "Biochemistry",
+          category: "Electrolytes",
+          price: "3500 TSH",
+          resultType: "Observable",
+          normalRange: "Seen",
+          result: 'Unseen'
         }
       ]
     },
   ];
+
   dataSource = new MatTableDataSource(this.patient);
 
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
 
+  constructor(public dialog: MatDialog){}
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  results(patient: any){
+    this.dialog.open(PatientResultComponent, {
+      data: patient
+    });
   }
 
 }
